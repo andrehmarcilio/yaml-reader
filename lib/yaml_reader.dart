@@ -38,7 +38,7 @@ class Yaml {
 
       // Get Father Node
 
-      final baseFatherNode = nodes.lastWhere((node) => node is FatherNode) as FatherNode;
+      final baseFatherNode = nodes.last as FatherNode;
 
       final fatherNode = _findFatherNode(baseFatherNode, lineInfo.level);
 
