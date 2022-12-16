@@ -3,5 +3,5 @@ abstract class Node {
 
   Node(this.level);
 
-  Map<String, dynamic> toMap();
+  dynamic toMap();
 }

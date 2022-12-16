@@ -22,3 +22,14 @@
     subscribe:
       enabled: true
       type: authenticated
+
+ atributos:
+   - verde
+   - alto
+   - aspero
+   - escuro
+   - teste: 
+      legal: true
+      massa: true
+
+   
