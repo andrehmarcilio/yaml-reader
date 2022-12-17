@@ -3,23 +3,22 @@ import 'package:yaml_reader/utils/string_extensions.dart';
 class LineInfo {
   final int level;
   final String key;
-  final String value;
+  final dynamic value;
   final bool isListItem;
   final bool hasTwoDots;
   final bool isLongText;
   final bool isTextLine;
+  final bool hasValue;
 
-  bool get hasValue => value.isNotEmpty;
-
-  LineInfo._({
-    required this.key,
-    required this.level,
-    required this.value,
-    required this.isListItem,
-    required this.hasTwoDots,
-    required this.isLongText,
-    required this.isTextLine,
-  });
+  LineInfo._(
+      {required this.key,
+      required this.level,
+      required this.value,
+      required this.isListItem,
+      required this.hasTwoDots,
+      required this.isLongText,
+      required this.isTextLine,
+      required this.hasValue});
 
   factory LineInfo.getLineInfo(String line) {
     bool isListItem = false;
@@ -46,14 +45,17 @@ class LineInfo {
       isLongText = true;
     }
 
+    final hasValue = value.isNotEmpty;
+
     return LineInfo._(
       key: key,
-      value: value,
+      hasValue: hasValue,
       level: currentLevel,
       isListItem: isListItem,
       hasTwoDots: hasTwoDots,
       isLongText: isLongText,
       isTextLine: isTextLine,
+      value: value.tryParseToSomething(),
     );
   }
 }

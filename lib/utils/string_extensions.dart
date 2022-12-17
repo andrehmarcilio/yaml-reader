@@ -15,4 +15,23 @@ extension StringExtensions on String {
     }
     return currentLevel;
   }
+
+  dynamic tryParseToSomething() {
+    int? someIntValue = int.tryParse(this);
+    if (someIntValue != null) {
+      return someIntValue;
+    }
+    double? someDoubleValue = double.tryParse(this);
+    if (someDoubleValue != null) {
+      return someDoubleValue;
+    }
+
+    if (this == 'true') {
+      return true;
+    } else if (this == 'false') {
+      return false;
+    }
+
+    return this;
+  }
 }
