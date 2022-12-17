@@ -28,4 +28,20 @@ void main() async {
   test('when get visibility.view.type should return public', () async {
     expect(yaml['visibility']['view']['type'], 'public');
   });
+
+  test('when get texto_bacana should return a big text', () async {
+    final text = yaml['texto_bacana'] as String;
+    final valid = text.contains('saca só!') && text.contains('usado ali em cima') && text.contains('linhas');
+    expect(valid, true);
+  });
+
+  test('when get atributos[4].teste.texto_grande should return a big text', () async {
+    final text = yaml['atributos'][4]['teste']['texto_grande'] as String;
+    final valid = text.contains('um texto de mais') && text.contains('show demais!') && text.contains('linha marota');
+    expect(valid, true);
+  });
+
+  test('when get atributos[4].teste.textinho should return a meu textinho', () async {
+    expect(yaml['atributos'][4]['teste']['textinho'], 'meu textinho');
+  });
 }

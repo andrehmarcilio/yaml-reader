@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:yaml_reader/models/long_text_node.dart';
+
 import 'models/father_node.dart';
 import 'models/line_info.dart';
 import 'models/node.dart';
@@ -32,6 +34,13 @@ class Yaml {
       final isBaseNode = lineInfo.level == minLevel;
 
       if (isBaseNode) {
+        nodes.addNode(lineInfo);
+        continue;
+      }
+
+      // Add Text in Long Text Node
+
+      if (lineInfo.isTextLine && nodes.last is LongTextNode) {
         nodes.addNode(lineInfo);
         continue;
       }

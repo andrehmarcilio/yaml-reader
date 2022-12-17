@@ -6,6 +6,7 @@ import '../models/father_node.dart';
 import '../models/list_item_end_node.dart';
 import '../models/list_item_father_node.dart';
 import '../models/list_node.dart';
+import '../models/long_text_node.dart';
 
 extension NodeListExtension on List<Node> {
   Map<String, dynamic> toMap() {
@@ -25,6 +26,15 @@ extension NodeListExtension on List<Node> {
       } else {
         add(ListItemNode(lineInfo.key, lineInfo.level));
       }
+      return;
+    }
+    if (lineInfo.isLongText) {
+      add(LongTextNode(lineInfo.level, {lineInfo.key: ''}, key: lineInfo.key));
+      return;
+    }
+    if (lineInfo.isTextLine) {
+      final longTextNode = last as LongTextNode;
+      longTextNode.addText(lineInfo.key);
       return;
     }
     if (lineInfo.hasValue) {

@@ -31,5 +31,14 @@
    - teste: 
       legal: true
       massa: true
+      texto_grande: |
+        um texto de mais de uma linha,
+        show demais!
+        algo aqui nessa última linha marota
+      textinho: meu textinho
 
+ texto_bacana: |
+  saca só! esse aqui é um texto muito legal!
+  Graças ao sinal '|'' usado ali em cima,
+  podemos escrever um texto com várias linhas
    
